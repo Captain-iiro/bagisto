@@ -1,0 +1,40 @@
+# --- Git ---
+.git
+.gitignore
+
+# --- Local environment / secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Dependencies (reinstalled inside the image) ---
+vendor
+node_modules
+
+# --- Runtime caches (regenerated at boot) ---
+bootstrap/cache
+
+# --- IDE / OS ---
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Tests / CI ---
+tests
+phpunit.xml
+.github
+
+# --- Local dev tooling ---
+composer.lock.bak
+yarn.lock
+pnpm-lock.yaml
+package-lock.json
+npm-debug.log*
+yarn-error.log
+
+# --- Local logs / caches ---
+*.log
+bootstrap/cache
