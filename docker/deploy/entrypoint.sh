@@ -58,6 +58,28 @@ DB_PASSWORD="${DB_PASSWORD:-bagisto}"
 cd "$APP_DIR"
 
 # ==========================================================================
+# Ensure the runtime directory skeleton exists. A mounted volume (Dokploy
+# persistent storage) can shadow the directories baked into the image, so
+# recreate anything missing before any artisan command runs.
+# ==========================================================================
+log "Ensuring storage directory skeleton..."
+mkdir -p \
+    storage/app/private \
+    storage/app/public/data-transfer/samples/csv \
+    storage/app/public/data-transfer/samples/images \
+    storage/app/public/data-transfer/samples/xls \
+    storage/app/public/data-transfer/samples/xlsx \
+    storage/app/public/data-transfer/samples/xml \
+    storage/debugbar \
+    storage/fonts \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/testing \
+    storage/framework/views \
+    storage/logs \
+    bootstrap/cache
+
+# ==========================================================================
 # Apply runtime environment overrides to .env
 # ==========================================================================
 log "Applying runtime environment overrides..."
